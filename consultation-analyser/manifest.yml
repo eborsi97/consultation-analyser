@@ -1,0 +1,6 @@
+---
+applications:
+- name: consultation-analyser-develop
+  memory: 512M
+  buildpacks:
+  - python_buildpack

@@ -1,0 +1,12 @@
+DJANGO_SETTINGS_MODULE=consultation_analyser.settings
+PORT=8000
+DEBUG=True
+DJANGO_SECRET_KEY='1n53cur3K3y'
+POSTGRES_HOST=consultation_analyser-test-db
+POSTGRES_PORT=5432
+POSTGRES_DB=consultation-analyser
+POSTGRES_USER=consultation-analyser
+POSTGRES_PASSWORD=insecure
+PGPASSWORD=insecure
+DATABASE_URL="postgres://consultation-analyser:insecure@consultation_analyser-test-db:5432/consultation-analyser"
+BASE_URL=http://localhost:8000/
