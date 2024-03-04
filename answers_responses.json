@@ -1,0 +1,19 @@
+[
+	{
+    "respondent":
+      "id": 1, (int? UUID?)
+      "age_group": "18-24", (options/text)
+      "location": "England", (options)
+      "capacity": "Personal" (options)
+      "answers": [
+        "q1": {
+          "closed_response": "agree" (options)
+          "free_text": "some text" (text)
+          "theme": X (for dummy data)
+        },
+        "q2"
+    }
+
+
+
+    ]
