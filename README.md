@@ -36,6 +36,17 @@ Confirm it works with
 poetry run python manage.py check --database default
 ```
 
+### Run the application
+```
+poetry run python manage.py runserver
+```
+
+### Run the tests
+
+```
+poetry run pytest
+```
+
 ## Frontend Prototype
 
 Located at `/prototype`. Using the Gov.uk Prototype Kit. This is work in progress, not all pages are available yet.
