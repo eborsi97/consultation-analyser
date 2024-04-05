@@ -68,7 +68,7 @@ class Theme(UUIDPrimaryKeyModel, TimeStampedModel):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=["summary", "label", "keywords", "question"], name="unique_up_to_question"),
+            models.UniqueConstraint(fields=["label", "question"], name="unique_up_to_question"),
         ]
 
     def save(self, *args, **kwargs):
