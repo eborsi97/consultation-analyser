@@ -7,7 +7,8 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 router.post('/upload-file', (request, response) => {
-    if (request.session.data.file) {
+    const isJsonFile = request.session.data.file?.includes('.js');
+    if (isJsonFile) {
         request.session.data['upload-error'] = false;
         response.redirect('/upload-success');
     } else {

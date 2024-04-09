@@ -2,7 +2,6 @@
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {% block pageTitle %}Upload consultation{% endblock %}
@@ -10,14 +9,14 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
 
     {% if data["upload-error"] %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: [
           {
-            text: "The file must be in the correct format",
+            text: "The file must use the correct schema",
             href: "#file-upload"
           }
         ]
@@ -25,31 +24,41 @@
     {% endif %}
 
     <h1 class="govuk-heading-l">Upload a consultation</h1>
-    <p>Files must be in JSON format, to match the <a href="#schema">required schema</a>.</p>
-
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
     <form action="/upload-file" method="post">
 
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="name">
+          Your name
+        </label>
+        <input class="govuk-input" id="name" name="name" type="text" autocomplete="name" spellcheck="false" required value="{{ data.name }}">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="email">
+          Your email address
+        </label>
+        <input class="govuk-input" id="email" name="email" type="email" autocomplete="email" spellcheck="false" required value="{{ data.email }}">
+      </div>
+
       {% if data["upload-error"] %}
-        {{ govukFileUpload({
-          id: "file",
-          name: "file",
-          label: {
-            text: "Upload a JSON file"
-          },
-          errorMessage: {
-            text: "The file must be in JSON format to match the schema"
-          }
-        }) }}
+        <div class="govuk-form-group govuk-form-group--error">
+          <label class="govuk-label" for="file">
+            Upload a file
+            <span class="iai-label__additional-text">Files must be in JSON format, to match the <a href="#schema">required schema</a></span>
+          </label>
+          <p id="file-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The file has the incorrect schema
+          </p>
+          <input class="govuk-file-upload govuk-file-upload--error" id="file" name="file" type="file" aria-describedby="file-error" required>
+        </div>
       {% else %}
-        {{ govukFileUpload({
-          id: "file",
-          name: "file",
-          label: {
-            text: "Upload a JSON file"
-          }
-        }) }}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="file">
+            Upload a file
+            <span class="iai-label__additional-text">Files must be in JSON format, to match the <a href="#schema">required schema</a></span>
+          </label>
+          <input class="govuk-file-upload" id="file" name="file" type="file" required>
+        </div>
       {% endif %}
 
       {{ govukButton({

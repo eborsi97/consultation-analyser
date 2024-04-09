@@ -6,6 +6,7 @@
 :root {
   --iai-pink: #b62777;
   --govuk-light-blue: #5694ca;
+  --govuk-secondary-text-colour: #505a5f;
 }
 
 .govuk-header__container {
@@ -97,4 +98,13 @@
   display: block;
   font-size: 1.125rem;
   font-weight: 100;
+}
+
+
+/** UPLOAD PAGE **/
+.iai-label__additional-text {
+  color: var(--govuk-secondary-text-colour);
+  display: block;
+  font-size: 1rem;
+  margin: 0.25rem 0;
 }
